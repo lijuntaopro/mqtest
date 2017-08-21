@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import cn.paywe.fos.support.exception.BizException;
 import cn.paywe.fos.support.utils.xss.XssCheckUtils;
 
 
@@ -69,7 +68,7 @@ public class XssCheckHttpServletRequestWrapper extends HttpServletRequestWrapper
 	private String cleanXSS(String string) {
 		boolean CheckString = XssCheckUtils.xssCheck(string);
 		if( !CheckString){
-			throw new BizException( 0 , "存在非法字符");
+			throw new RuntimeException("0，存在非法字符");
 		}
 		return string;
 	}
@@ -77,7 +76,7 @@ public class XssCheckHttpServletRequestWrapper extends HttpServletRequestWrapper
 	private String[] cleanXSS(String[] strings) {
 		boolean CheckString = XssCheckUtils.xssCheckStrings(strings);
 		if( !CheckString){
-			throw new BizException( 0 , "存在非法字符");
+			throw new RuntimeException("0，存在非法字符");
 		}
 		return strings;
 	}

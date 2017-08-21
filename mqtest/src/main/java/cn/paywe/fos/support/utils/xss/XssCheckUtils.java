@@ -1,5 +1,6 @@
 package cn.paywe.fos.support.utils.xss;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -15,13 +16,11 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cn.paywe.fos.support.annotation.XssCheckIgnore;
-import cn.paywe.fos.support.config.XssCheckConfig;
-import cn.paywe.fos.support.dto.DtoBase;
+import cn.paywe.fos.support.utils.config.XssCheckConfig;
 import cn.paywe.fos.support.utils.escape.EscapeUtils;
 
 /**
@@ -209,7 +208,7 @@ public class XssCheckUtils {
 						}
 						
 						//检查属性值，只有继承DtoBase才多重嵌套检查
-						if (fieldValue != null && fieldValue instanceof DtoBase){
+						if (fieldValue != null && fieldValue instanceof Serializable){
 							if( !xssCheck(fieldValue)){
 								return false;
 							}
@@ -235,11 +234,8 @@ public class XssCheckUtils {
 			return true;
 		}
 		
-		boolean isNotCheckClass = (obj instanceof Boolean) || (obj instanceof Byte) || 
-		(obj instanceof Character) || (obj instanceof Integer) || 
-		(obj instanceof Long) || (obj instanceof Float) || 
-		(obj instanceof Double) || (obj instanceof BigInteger) || 
-		(obj instanceof BigDecimal) || (obj instanceof Date)
+		boolean isNotCheckClass = (obj instanceof Boolean) || (obj instanceof Number) || 
+		(obj instanceof Character) ||  (obj instanceof Date)
 		|| (obj instanceof java.sql.Date);
 		
 		return isNotCheckClass;

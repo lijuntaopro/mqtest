@@ -23,7 +23,7 @@ import cn.paywe.fos.support.utils.escape.EscapeUtils;
  */
 public class EscapeAspect {
 
-	private static Logger log = LogManager.getLogger(EscapeUtils.class);
+	private static Logger log = LogManager.getLogger(EscapeAspect.class);
 
 	// 只切Escape注解
 	public void escapePointcut() {

@@ -28,7 +28,7 @@
     <result column="channel_mode" jdbcType="SMALLINT" property="channelMode" />
     <result column="allinpay_merchant_name" jdbcType="NVARCHAR" property="allinpayMerchantName" />
     <result column="allinpay_merchant_pdw" jdbcType="VARCHAR" property="allinpayMerchantPdw" />
-    <result column="allinpay_merchant_publickey_pdw" jdbcType="VARCHAR" property="allinpayMerchantPublickeyPdw" />
+    <result column="allinpay_merchant_privatekey_pdw" jdbcType="VARCHAR" property="allinpayMerchantPrivatekeyPdw" />
     <result column="Settlement_Cycle" jdbcType="INTEGER" property="settlementCycle" />
     <result column="Settlement_type" jdbcType="INTEGER" property="settlementType" />
     <result column="bank_statement_date" jdbcType="TIMESTAMP" property="bankStatementDate" />
@@ -115,7 +115,7 @@
     id, name, pay_platform_id, logo, pid, appid, agency_id, status, create_time, create_user, 
     update_time, update_user, is_delete, cost_rate, md5_key, private_key, public_key, 
     channel_merchant_no, key_type, app_secret, channel_mode, allinpay_merchant_name, 
-    allinpay_merchant_pdw, allinpay_merchant_publickey_pdw, Settlement_Cycle, Settlement_type, 
+    allinpay_merchant_pdw, allinpay_merchant_privatekey_pdw, Settlement_Cycle, Settlement_type, 
     bank_statement_date, bank_statement_download, is_set_receipt_rate, pointcut_date
   </sql>
   <sql id="Blob_Column_List">
@@ -253,8 +253,8 @@
       <if test="record.allinpayMerchantPdw != null">
         allinpay_merchant_pdw = #{record.allinpayMerchantPdw,jdbcType=VARCHAR},
       </if>
-      <if test="record.allinpayMerchantPublickeyPdw != null">
-        allinpay_merchant_publickey_pdw = #{record.allinpayMerchantPublickeyPdw,jdbcType=VARCHAR},
+      <if test="record.allinpayMerchantPrivatekeyPdw != null">
+        allinpay_merchant_privatekey_pdw = #{record.allinpayMerchantPrivatekeyPdw,jdbcType=VARCHAR},
       </if>
       <if test="record.settlementCycle != null">
         Settlement_Cycle = #{record.settlementCycle,jdbcType=INTEGER},
@@ -316,7 +316,7 @@
       channel_mode = #{record.channelMode,jdbcType=SMALLINT},
       allinpay_merchant_name = #{record.allinpayMerchantName,jdbcType=NVARCHAR},
       allinpay_merchant_pdw = #{record.allinpayMerchantPdw,jdbcType=VARCHAR},
-      allinpay_merchant_publickey_pdw = #{record.allinpayMerchantPublickeyPdw,jdbcType=VARCHAR},
+      allinpay_merchant_privatekey_pdw = #{record.allinpayMerchantPrivatekeyPdw,jdbcType=VARCHAR},
       Settlement_Cycle = #{record.settlementCycle,jdbcType=INTEGER},
       Settlement_type = #{record.settlementType,jdbcType=INTEGER},
       bank_statement_date = #{record.bankStatementDate,jdbcType=TIMESTAMP},
@@ -358,7 +358,7 @@
       channel_mode = #{record.channelMode,jdbcType=SMALLINT},
       allinpay_merchant_name = #{record.allinpayMerchantName,jdbcType=NVARCHAR},
       allinpay_merchant_pdw = #{record.allinpayMerchantPdw,jdbcType=VARCHAR},
-      allinpay_merchant_publickey_pdw = #{record.allinpayMerchantPublickeyPdw,jdbcType=VARCHAR},
+      allinpay_merchant_privatekey_pdw = #{record.allinpayMerchantPrivatekeyPdw,jdbcType=VARCHAR},
       Settlement_Cycle = #{record.settlementCycle,jdbcType=INTEGER},
       Settlement_type = #{record.settlementType,jdbcType=INTEGER},
       bank_statement_date = #{record.bankStatementDate,jdbcType=TIMESTAMP},

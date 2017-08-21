@@ -2,9 +2,6 @@ package cn.paywe.fos.support.aop;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,8 +14,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import cn.paywe.fos.support.action.requestwrap.XssCheckHttpServletRequestWrapper;
 import cn.paywe.fos.support.annotation.XssCheckIgnore;
-import cn.paywe.fos.support.exception.BizException;
-import cn.paywe.fos.support.utils.escape.EscapeUtils;
 import cn.paywe.fos.support.utils.xss.XssCheckUtils;
 
 /**
@@ -29,7 +24,7 @@ import cn.paywe.fos.support.utils.xss.XssCheckUtils;
  */
 public class XssCheckAspect {
 
-	private static Logger log = LogManager.getLogger(EscapeUtils.class);
+	private static Logger log = LogManager.getLogger(XssCheckAspect.class);
 
 	public void escapePointcut() {
 	}
@@ -94,7 +89,7 @@ public class XssCheckAspect {
 							args[n] = new XssCheckHttpServletRequestWrapper((HttpServletRequest)args[n]);
 						}else if(!XssCheckUtils.xssCheck(args[n])){
 							//其他实体，xss检查参数，不通过抛出异常
-							throw new BizException(0, "存在非法字符");
+							throw new RuntimeException("0,存在非法字符");
 						}
 					}
 					

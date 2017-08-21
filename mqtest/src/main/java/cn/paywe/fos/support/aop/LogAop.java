@@ -18,8 +18,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import cn.paywe.fos.support.annotation.LogOperation;
-import cn.paywe.fos.support.utils.date.DateUtils;
-import cn.paywe.fos.support.utils.json.JsonUtils;
 
 
 
@@ -37,9 +35,9 @@ public class LogAop {
 	}
 	
 	public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
-		Date startTime = DateUtils.getCurrentDate();
+		Date startTime = new Date();
 		Object returnValue = proceedingJoinPoint.proceed();
-		Date endTime = DateUtils.getCurrentDate();
+		Date endTime = new Date();
 		
 		
 		Annotation[] classAnnotations= proceedingJoinPoint.getTarget().getClass().getAnnotations();
@@ -88,10 +86,5 @@ public class LogAop {
 			logBuilder.put("returnValue", "returnValue is not Serializable");
 		}
 		
-		logBuilder.put("startTime", DateUtils.formatDateTime(startTime));
-		logBuilder.put("endTime", DateUtils.formatDateTime(endTime));
-		logBuilder.put("consumedMillisecond", endTime.getTime() - startTime.getTime());
-		
-		logger.info(JsonUtils.toJson(logBuilder));
 	}
 }

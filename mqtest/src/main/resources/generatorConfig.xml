@@ -29,7 +29,7 @@
     <javaClientGenerator targetPackage="cn.paywe.fos.repository.manage.dao" targetProject="src/main/java" type="XMLMAPPER">
     	<property value="true" name="enableSubPackages"/>
     </javaClientGenerator>
-		<table tableName="operation_log" domainObjectName="OperationLogEntity" />
+		<table tableName="merchant_contract_relation" domainObjectName="MerchantContractRelationEntity" />
      <!--  <table tableName="app_auth_token" domainObjectName="AppAuthTokenEntity" enableCountByExample="true" enableSelectByExample="true"/>
       <table tableName="agency" domainObjectName="Agency" />
       <table tableName="area" domainObjectName="Area" />
