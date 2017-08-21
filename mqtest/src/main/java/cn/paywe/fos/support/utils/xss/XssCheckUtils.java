@@ -20,7 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cn.paywe.fos.support.annotation.XssCheckIgnore;
-import cn.paywe.fos.support.utils.config.XssCheckConfig;
+import cn.paywe.fos.support.config.XssCheckConfig;
 import cn.paywe.fos.support.utils.escape.EscapeUtils;
 
 /**

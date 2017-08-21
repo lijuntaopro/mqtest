@@ -1,4 +1,4 @@
-package cn.paywe.fos.support.utils.config;
+package cn.paywe.fos.support.config;
 
 import java.util.ArrayList;
 import java.util.List;
