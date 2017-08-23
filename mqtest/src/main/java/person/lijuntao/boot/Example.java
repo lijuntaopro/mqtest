@@ -6,10 +6,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +23,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @RestController  
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+//@ComponentScan({"person.lijuntao","cn.paywe.fos"}
+//@ImportResource(locations={"classpath:application.xml"})
 public class Example extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer{  
       
     @RequestMapping("/")  
@@ -44,16 +51,17 @@ public class Example extends SpringBootServletInitializer implements EmbeddedSer
     }  
     
     public static void main(String[] args) throws Exception {
+    	ApplicationContext a = new ClassPathXmlApplicationContext("classpath:application.xml");
         SpringApplication.run(Example.class, args);
     }
     
     @Bean()
-    public Example2 get(){
+    public Example3 get(){
     	System.out.println("1222");
-    	return new Example2();
+    	return new Example3();
     }
     
-    public class Example2{
+    public class Example3{
     	
     }
 
