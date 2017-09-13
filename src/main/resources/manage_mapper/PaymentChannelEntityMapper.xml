@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.paywe.fos.repository.manage.dao.PaymentChannelEntityMapper">
+  <resultMap id="BaseResultMap" type="cn.paywe.fos.repository.manage.entity.PaymentChannelEntity">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="NVARCHAR" property="name" />
+    <result column="pay_platform_id" jdbcType="VARCHAR" property="payPlatformId" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="appid" jdbcType="VARCHAR" property="appid" />
+    <result column="agency_id" jdbcType="VARCHAR" property="agencyId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="cost_rate" jdbcType="DECIMAL" property="costRate" />
+    <result column="md5_key" jdbcType="VARCHAR" property="md5Key" />
+    <result column="private_key" jdbcType="VARCHAR" property="privateKey" />
+    <result column="public_key" jdbcType="VARCHAR" property="publicKey" />
+    <result column="channel_merchant_no" jdbcType="VARCHAR" property="channelMerchantNo" />
+    <result column="key_type" jdbcType="SMALLINT" property="keyType" />
+    <result column="app_secret" jdbcType="VARCHAR" property="appSecret" />
+    <result column="channel_mode" jdbcType="SMALLINT" property="channelMode" />
+    <result column="allinpay_merchant_name" jdbcType="NVARCHAR" property="allinpayMerchantName" />
+    <result column="allinpay_merchant_pdw" jdbcType="VARCHAR" property="allinpayMerchantPdw" />
+    <result column="allinpay_merchant_privatekey_pdw" jdbcType="VARCHAR" property="allinpayMerchantPrivatekeyPdw" />
+    <result column="Settlement_Cycle" jdbcType="INTEGER" property="settlementCycle" />
+    <result column="Settlement_type" jdbcType="INTEGER" property="settlementType" />
+    <result column="bank_statement_date" jdbcType="TIMESTAMP" property="bankStatementDate" />
+    <result column="bank_statement_download" jdbcType="VARCHAR" property="bankStatementDownload" />
+    <result column="is_set_receipt_rate" jdbcType="BIT" property="isSetReceiptRate" />
+    <result column="pointcut_date" jdbcType="TIMESTAMP" property="pointcutDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.paywe.fos.repository.manage.entity.PaymentChannelEntityWithBLOBs">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="certificate" jdbcType="VARBINARY" property="certificate" />
+    <result column="merchant_public_crt" jdbcType="VARBINARY" property="merchantPublicCrt" />
+    <result column="merchant_private_crt" jdbcType="VARBINARY" property="merchantPrivateCrt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, name, pay_platform_id, logo, pid, appid, agency_id, status, create_time, create_user, 
+    update_time, update_user, is_delete, cost_rate, md5_key, private_key, public_key, 
+    channel_merchant_no, key_type, app_secret, channel_mode, allinpay_merchant_name, 
+    allinpay_merchant_pdw, allinpay_merchant_privatekey_pdw, Settlement_Cycle, Settlement_type, 
+    bank_statement_date, bank_statement_download, is_set_receipt_rate, pointcut_date
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    certificate, merchant_public_crt, merchant_private_crt
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="cn.paywe.fos.repository.manage.entity.PaymentChannelEntityExample" resultMap="ResultMapWithBLOBs">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from payment_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="cn.paywe.fos.repository.manage.entity.PaymentChannelEntityExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from payment_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="cn.paywe.fos.repository.manage.entity.PaymentChannelEntityExample">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from payment_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="cn.paywe.fos.repository.manage.entity.PaymentChannelEntityExample" resultType="java.lang.Integer">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select count(*) from payment_channel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update payment_channel
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.payPlatformId != null">
+        pay_platform_id = #{record.payPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logo != null">
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null">
+        pid = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appid != null">
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agencyId != null">
+        agency_id = #{record.agencyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDelete != null">
+        is_delete = #{record.isDelete,jdbcType=BIT},
+      </if>
+      <if test="record.costRate != null">
+        cost_rate = #{record.costRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.md5Key != null">
+        md5_key = #{record.md5Key,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privateKey != null">
+        private_key = #{record.privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publicKey != null">
+        public_key = #{record.publicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channelMerchantNo != null">
+        channel_merchant_no = #{record.channelMerchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyType != null">
+        key_type = #{record.keyType,jdbcType=SMALLINT},
+      </if>
+      <if test="record.appSecret != null">
+        app_secret = #{record.appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channelMode != null">
+        channel_mode = #{record.channelMode,jdbcType=SMALLINT},
+      </if>
+      <if test="record.allinpayMerchantName != null">
+        allinpay_merchant_name = #{record.allinpayMerchantName,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.allinpayMerchantPdw != null">
+        allinpay_merchant_pdw = #{record.allinpayMerchantPdw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.allinpayMerchantPrivatekeyPdw != null">
+        allinpay_merchant_privatekey_pdw = #{record.allinpayMerchantPrivatekeyPdw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.settlementCycle != null">
+        Settlement_Cycle = #{record.settlementCycle,jdbcType=INTEGER},
+      </if>
+      <if test="record.settlementType != null">
+        Settlement_type = #{record.settlementType,jdbcType=INTEGER},
+      </if>
+      <if test="record.bankStatementDate != null">
+        bank_statement_date = #{record.bankStatementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bankStatementDownload != null">
+        bank_statement_download = #{record.bankStatementDownload,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isSetReceiptRate != null">
+        is_set_receipt_rate = #{record.isSetReceiptRate,jdbcType=BIT},
+      </if>
+      <if test="record.pointcutDate != null">
+        pointcut_date = #{record.pointcutDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.certificate != null">
+        certificate = #{record.certificate,jdbcType=VARBINARY},
+      </if>
+      <if test="record.merchantPublicCrt != null">
+        merchant_public_crt = #{record.merchantPublicCrt,jdbcType=VARBINARY},
+      </if>
+      <if test="record.merchantPrivateCrt != null">
+        merchant_private_crt = #{record.merchantPrivateCrt,jdbcType=VARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update payment_channel
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=NVARCHAR},
+      pay_platform_id = #{record.payPlatformId,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      agency_id = #{record.agencyId,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=BIT},
+      cost_rate = #{record.costRate,jdbcType=DECIMAL},
+      md5_key = #{record.md5Key,jdbcType=VARCHAR},
+      private_key = #{record.privateKey,jdbcType=VARCHAR},
+      public_key = #{record.publicKey,jdbcType=VARCHAR},
+      channel_merchant_no = #{record.channelMerchantNo,jdbcType=VARCHAR},
+      key_type = #{record.keyType,jdbcType=SMALLINT},
+      app_secret = #{record.appSecret,jdbcType=VARCHAR},
+      channel_mode = #{record.channelMode,jdbcType=SMALLINT},
+      allinpay_merchant_name = #{record.allinpayMerchantName,jdbcType=NVARCHAR},
+      allinpay_merchant_pdw = #{record.allinpayMerchantPdw,jdbcType=VARCHAR},
+      allinpay_merchant_privatekey_pdw = #{record.allinpayMerchantPrivatekeyPdw,jdbcType=VARCHAR},
+      Settlement_Cycle = #{record.settlementCycle,jdbcType=INTEGER},
+      Settlement_type = #{record.settlementType,jdbcType=INTEGER},
+      bank_statement_date = #{record.bankStatementDate,jdbcType=TIMESTAMP},
+      bank_statement_download = #{record.bankStatementDownload,jdbcType=VARCHAR},
+      is_set_receipt_rate = #{record.isSetReceiptRate,jdbcType=BIT},
+      pointcut_date = #{record.pointcutDate,jdbcType=TIMESTAMP},
+      certificate = #{record.certificate,jdbcType=VARBINARY},
+      merchant_public_crt = #{record.merchantPublicCrt,jdbcType=VARBINARY},
+      merchant_private_crt = #{record.merchantPrivateCrt,jdbcType=VARBINARY}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update payment_channel
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=NVARCHAR},
+      pay_platform_id = #{record.payPlatformId,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=VARCHAR},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      agency_id = #{record.agencyId,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      is_delete = #{record.isDelete,jdbcType=BIT},
+      cost_rate = #{record.costRate,jdbcType=DECIMAL},
+      md5_key = #{record.md5Key,jdbcType=VARCHAR},
+      private_key = #{record.privateKey,jdbcType=VARCHAR},
+      public_key = #{record.publicKey,jdbcType=VARCHAR},
+      channel_merchant_no = #{record.channelMerchantNo,jdbcType=VARCHAR},
+      key_type = #{record.keyType,jdbcType=SMALLINT},
+      app_secret = #{record.appSecret,jdbcType=VARCHAR},
+      channel_mode = #{record.channelMode,jdbcType=SMALLINT},
+      allinpay_merchant_name = #{record.allinpayMerchantName,jdbcType=NVARCHAR},
+      allinpay_merchant_pdw = #{record.allinpayMerchantPdw,jdbcType=VARCHAR},
+      allinpay_merchant_privatekey_pdw = #{record.allinpayMerchantPrivatekeyPdw,jdbcType=VARCHAR},
+      Settlement_Cycle = #{record.settlementCycle,jdbcType=INTEGER},
+      Settlement_type = #{record.settlementType,jdbcType=INTEGER},
+      bank_statement_date = #{record.bankStatementDate,jdbcType=TIMESTAMP},
+      bank_statement_download = #{record.bankStatementDownload,jdbcType=VARCHAR},
+      is_set_receipt_rate = #{record.isSetReceiptRate,jdbcType=BIT},
+      pointcut_date = #{record.pointcutDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

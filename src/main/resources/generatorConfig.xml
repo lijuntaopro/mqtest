@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+  <context id="sqlserver">
+  <!-- <context id="sqlserver" targetRuntime="MyBatis3Simple" defaultModelType="flat"> -->
+  
+    <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+      <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+    </plugin>
+     <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                    connectionURL="jdbc:sqlserver://10.1.20.57:1433;databaseName=FOS_Manage;"
+                    userId="FOS_Admin"
+                    password="FOS_AdminAdmin">
+    </jdbcConnection>
+
+    <javaModelGenerator targetPackage="cn.paywe.fos.repository.manage.entity" targetProject="src/main/java">
+        <property name="rootClass" value="cn.paywe.fos.support.repository.DomainBase"/>
+        <property value="true" name="enableSubPackages"/>
+		<property value="true" name="trimStrings"/>
+    </javaModelGenerator>
+    <sqlMapGenerator targetPackage="manage_mapper"  targetProject="src/main/resources">
+    	<property value="true" name="enableSubPackages"/>
+    </sqlMapGenerator>
+    <javaClientGenerator targetPackage="cn.paywe.fos.repository.manage.dao" targetProject="src/main/java" type="XMLMAPPER">
+    	<property value="true" name="enableSubPackages"/>
+    </javaClientGenerator>
+		<table tableName="merchant_contract_relation" domainObjectName="MerchantContractRelationEntity" />
+     <!--  <table tableName="app_auth_token" domainObjectName="AppAuthTokenEntity" enableCountByExample="true" enableSelectByExample="true"/>
+      <table tableName="agency" domainObjectName="Agency" />
+      <table tableName="area" domainObjectName="Area" />
+      <table tableName="file" domainObjectName="File" />
+      <table tableName="menu" domainObjectName="Menu" />
+      <table tableName="merchant" domainObjectName="Merchant" />
+      <table tableName="merchant_contract" domainObjectName="MerchantContract" />
+      <table tableName="merchant_contract_service_plan_ref" domainObjectName="MerchantContractServicePlanRef" />
+      <table tableName="merchant_function_ref" domainObjectName="MerchantFunctionRef" />
+      <table tableName="operation_log" domainObjectName="OperationLog" />
+      <table tableName="payment_channel" domainObjectName="PaymentChannel" />
+      <table tableName="payment_channel_cost" domainObjectName="PaymentChannelCost" />
+      <table tableName="payment_platform" domainObjectName="PaymentPlatform" />
+      <table tableName="plan_detail" domainObjectName="PlanDetail" />
+      <table tableName="receipt_industry_category" domainObjectName="ReceiptIndustryCategory" />
+      <table tableName="receipt_industry_category_mapping" domainObjectName="ReceiptIndustryCategoryMapping" />
+      <table tableName="receipt_rate" domainObjectName="ReceiptRate" />
+      <table tableName="relate_app" domainObjectName="RelateApp" />
+      <table tableName="role" domainObjectName="Role" />
+      <table tableName="role_menu_ref" domainObjectName="RoleMenuRef" />
+      <table tableName="service_plan" domainObjectName="ServicePlan" />
+      <table tableName="service_provider" domainObjectName="ServiceProvider" />
+      <table tableName="shop_contract_ref" domainObjectName="ShopContractRef" />
+      <table tableName="sync_status" domainObjectName="SyncStatus" />
+      <table tableName="sync_tasks" domainObjectName="SyncTasks" />
+      <table tableName="user" domainObjectName="User" />
+      <table tableName="user_role_ref" domainObjectName="UserRoleRef" /> -->
+  </context>
+</generatorConfiguration>
