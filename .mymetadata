@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="mqtest"
+  id="myeclipse.1505304940476"
+  context-root="/mqtest"
+  j2ee-spec="1.7"
+  archive="mqtest.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
